@@ -1,7 +1,13 @@
 import { Elysia } from "elysia";
+import { connectDB } from "./db";
+import { chemicalsRoutes } from "./routes/chemicals";
+await connectDB();
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const app = new Elysia()
+  .get("/", () => ({
+    message: "Üdv a ChemData Mongoose API-n!"
+  }))
+  .use(chemicalsRoutes)
+  .listen(3000);
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+console.log(`🦊 Elysia + Mongoose fut a http://${app.server?.hostname}:${app.server?.port} címen`);
