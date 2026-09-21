@@ -1,9 +1,11 @@
 import { Elysia } from "elysia";
 import { connectDB } from "./db";
 import { chemicalsRoutes } from "./routes/chemicals";
+import { cors } from '@elysiajs/cors'
 await connectDB();
 
 const app = new Elysia()
+  .use(cors())
   .get("/", () => ({
     message: "Üdv a ChemData Mongoose API-n!"
   }))
