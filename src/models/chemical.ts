@@ -6,6 +6,7 @@ export interface IChemical extends Document {
   atomic_number?: number;
   type: 'element' | 'compound' | 'mixture' | 'other';
   cas_number?: string;
+  pubchem_id?: string;
   smiles?: string;
   molecular_weight?: number;
   properties?: Record<string, any>;
@@ -23,6 +24,7 @@ const ChemicalSchema = new Schema<IChemical>({
     enum: ['element', 'compound', 'mixture', 'other']
   },
   cas_number: { type: String },
+  pubchem_id: { type: String },
   smiles: { type: String },
   molecular_weight: { type: Number },
   properties: { type: Schema.Types.Mixed },

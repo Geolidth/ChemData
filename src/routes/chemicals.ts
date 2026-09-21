@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { ChemicalModel } from "../models/compound";
+import { ChemicalModel } from "../models/chemical";
 
 export const chemicalsRoutes = new Elysia({ prefix: "/chemicals" })
   .get("/", async ({ set }) => {
